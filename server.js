@@ -1,14 +1,20 @@
 const express = require('express')
 require('dotenv').config()
 const mongoose = require('mongoose')
+const bodyparser = require('body-parser')
 const cors = require('cors')
 
 const app = express()
 
 // -- Middleware -- //
 app.use(
+    bodyparser.json( { limit: "30mb", extended: true }),
+    bodyparser.urlencoded( { limit: "30mb", extended: true }),
     cors()
 )
+
+// Routes
+app.use('/users', require('./routes/user') )
 
 // Database Connection & Server Start -- //
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true })
