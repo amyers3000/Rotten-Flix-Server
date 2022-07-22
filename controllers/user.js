@@ -31,6 +31,28 @@ const UserController = {
         } catch (err) {
             res.status(500).json(err)
         }
+    },
+
+    // PUT edit user by Id
+    editUserById : async (req, res) => {
+        try {
+            const { id } = req.params
+            const editedUser = await User.findByIdAndUpdate(id, req.body)
+            res.json({ message: `User: ${editedUser.username} was edited successfully!` })
+        } catch (err) {
+            res.status(500).json(err)
+        }
+    },
+
+    // DELETE user by Id
+    deleteUserById : async (req, res) => {
+        try {
+            const { id } = req.params
+            const deletedUser = await User.findByIdAndDelete(id)
+            res.json({ message: `Successfully deleted ${deletedUser.username}` })
+        } catch (err) {
+            res.status(500).json(err)
+        }
     }
 
 }
