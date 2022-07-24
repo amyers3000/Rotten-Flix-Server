@@ -1,4 +1,4 @@
-const Rating = require('../models/user')
+const Rating = require('../models/rating')
 
 const RatingController = {
 
