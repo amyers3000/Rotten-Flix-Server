@@ -9,9 +9,13 @@ const ratingSchema = new mongoose.Schema({
     },
     username: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
+        ref: "User",
+        unique: true
     },
-    
+    movie: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Movie"
+    }
 })
 
 module.exports = mongoose.model('Rating', ratingSchema)
