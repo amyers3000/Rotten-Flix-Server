@@ -1,4 +1,5 @@
 # Rotten-Flix-Server Documentation
+https://rotten-flix-api.herokuapp.com/movies
 
 ## Routes
 
