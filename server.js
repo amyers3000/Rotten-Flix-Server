@@ -18,6 +18,7 @@ app.use('/users', require('./routes/user') )
 app.use('/reviews', require('./routes/review') )
 app.use('/ratings', require('./routes/rating') )
 app.use('/movies', require('./routes/movie') )
+app.use('/auth', require('./routes/auth') )
 
 // Database Connection & Server Start -- //
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true })
