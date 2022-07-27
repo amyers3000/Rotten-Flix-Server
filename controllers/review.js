@@ -8,7 +8,7 @@ const ReviewController = {
             const allReviews = await Review.find()
             res.json(allReviews)
         } catch (err) {
-            res.status(500).json(err)
+            res.status(500).json({ message : err })
         }
     },
 
@@ -19,7 +19,7 @@ const ReviewController = {
             const review = await Review.findById(id)
             res.json(review)
         } catch (err) {
-            res.status(500).json(err)
+            res.status(500).json({ message: err })
         }
     },
 
@@ -29,7 +29,7 @@ const ReviewController = {
             await Review.create(req.body)
             res.json({ message: `A new review was created!` })
         } catch (err) {
-            res.status(500).json(err)
+            res.status(500).json({ message : err })
         }
     },
 
@@ -40,7 +40,7 @@ const ReviewController = {
             await Review.findByIdAndUpdate(id, req.body)
             res.json({ message: `Review was edited successfully!` })
         } catch (err) {
-            res.status(500).json(err)
+            res.status(500).json({ message : err })
         }
     },
 
@@ -51,7 +51,7 @@ const ReviewController = {
             await Review.findByIdAndDelete(id)
             res.json({ message: `Successfully deleted review!` })
         } catch (err) {
-            res.status(500).json(err)
+            res.status(500).json({ message : err })
         }
     }
 
