@@ -8,7 +8,7 @@ const RatingController = {
             const allRatings = await Rating.find()
             res.json(allRatings)
         } catch (err) {
-            res.status(500).json(err)
+            res.status(500).json({ message: err })
         }
     },
 
@@ -19,7 +19,7 @@ const RatingController = {
             const rating = await Rating.findById(id)
             res.json(rating)
         } catch (err) {
-            res.status(500).json(err)
+            res.status(500).json({ message: err })
         }
     },
 
@@ -29,7 +29,7 @@ const RatingController = {
             await Rating.create(req.body)
             res.json({ message: `A new rating was created!` })
         } catch (err) {
-            res.status(500).json(err)
+            res.status(500).json({ message: err })
         }
     },
 
@@ -40,7 +40,7 @@ const RatingController = {
             await Rating.findByIdAndUpdate(id, req.body)
             res.json({ message: `Rating was edited successfully!` })
         } catch (err) {
-            res.status(500).json(err)
+            res.status(500).json({ message: err })
         }
     },
 
@@ -51,7 +51,7 @@ const RatingController = {
             await Rating.findByIdAndDelete(id)
             res.json({ message: `Successfully deleted rating!` })
         } catch (err) {
-            res.status(500).json(err)
+            res.status(500).json({ message: err })
         }
     }
 

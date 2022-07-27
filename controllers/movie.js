@@ -8,7 +8,7 @@ const MovieController = {
             const allMovies = await Movie.find()
             res.json(allMovies)
         } catch (err) {
-            res.status(500).json(err)
+            res.status(500).json({ message: err })
         }
     },
 
@@ -19,7 +19,7 @@ const MovieController = {
             const movie = await Movie.findById(id)
             res.json(movie)
         } catch (err) {
-            res.status(500).json(err)
+            res.status(500).json({ message: err })
         }
     },
 
@@ -29,7 +29,7 @@ const MovieController = {
             await Movie.create(req.body)
             res.json({ message: `A new movie was created!` })
         } catch (err) {
-            res.status(500).json(err)
+            res.status(500).json({ message: err })
         }
     },
 
@@ -40,7 +40,7 @@ const MovieController = {
             await Movie.findByIdAndUpdate(id, req.body)
             res.json({ message: `Movie was edited successfully!` })
         } catch (err) {
-            res.status(500).json(err)
+            res.status(500).json({ message: err })
         }
     },
 
@@ -51,7 +51,7 @@ const MovieController = {
             await Movie.findByIdAndDelete(id)
             res.json({ message: `Successfully deleted movie!` })
         } catch (err) {
-            res.status(500).json(err)
+            res.status(500).json({ message: err })
         }
     }
 
