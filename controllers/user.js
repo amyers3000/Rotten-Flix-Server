@@ -8,7 +8,7 @@ const UserController = {
             const allUsers = await User.find()
             res.json(allUsers)
         } catch (err) {
-            res.status(500).json(err)
+            res.status(500).json({ message : err })
         }
     },
 
@@ -19,7 +19,7 @@ const UserController = {
             const user = await User.findById(id)
             res.json(user)
         } catch (err) {
-            res.status(500).json(err)
+            res.status(500).json({ message : err })
         }
     },
 
@@ -29,7 +29,7 @@ const UserController = {
             const newUser = await User.create(req.body)
             res.json({ message: `New user created: ${newUser.username}` })
         } catch (err) {
-            res.status(500).json(err)
+            res.status(500).json({ message : err })
         }
     },
 
@@ -40,7 +40,7 @@ const UserController = {
             const editedUser = await User.findByIdAndUpdate(id, req.body)
             res.json({ message: `User: ${editedUser.username} was edited successfully!` })
         } catch (err) {
-            res.status(500).json(err)
+            res.status(500).json({ message : err })
         }
     },
 
@@ -51,7 +51,7 @@ const UserController = {
             const deletedUser = await User.findByIdAndDelete(id)
             res.json({ message: `Successfully deleted ${deletedUser.username}` })
         } catch (err) {
-            res.status(500).json(err)
+            res.status(500).json({ message : err })
         }
     }
 
