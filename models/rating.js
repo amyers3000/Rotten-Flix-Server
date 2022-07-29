@@ -3,8 +3,8 @@ const mongoose = require('mongoose')
 const ratingSchema = new mongoose.Schema({
     rating: {
         type: Number,
-        maximum: 5,
-        minimum: 1,
+        max: 5,
+        min: 1,
         required:true
     },
     username: {
