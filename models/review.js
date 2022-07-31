@@ -7,8 +7,7 @@ const reviewSchema = new mongoose.Schema({
     },
     username: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        unique: true
+        ref: "User"
     },
     movie: {
         type: mongoose.Schema.Types.ObjectId,
