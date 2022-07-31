@@ -28,7 +28,10 @@ const RatingController = {
     createNewRating : async (req, res) => {
         try {
             const newRating = await Rating.create(req.body)
-            await Movie.findByIdAndUpdate(newRating.movie,{ ratings: newRating._id })
+            const movie = await Movie.findById(newRating.movie);
+            movie.ratings.push(newRating._id);
+            movie.save()
+            // await Movie.findByIdAndUpdate(newRating.movie,{ ratings: newRating._id })
             res.json({ message: `A new rating was created!` })
         } catch (err) {
             res.status(500).json({ message: err })
