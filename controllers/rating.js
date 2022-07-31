@@ -1,4 +1,5 @@
 const Rating = require('../models/rating')
+const Movie = require('../models/movie')
 
 const RatingController = {
 
@@ -26,7 +27,8 @@ const RatingController = {
     // POST create new rating
     createNewRating : async (req, res) => {
         try {
-            await Rating.create(req.body)
+            const newRating = await Rating.create(req.body)
+            await Movie.findByIdAndUpdate(newRating.movie,{ ratings: newRating._id })
             res.json({ message: `A new rating was created!` })
         } catch (err) {
             res.status(500).json({ message: err })

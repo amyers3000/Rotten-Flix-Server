@@ -1,4 +1,5 @@
 const Review = require('../models/review')
+const Movie = require('../models/movie')
 
 const ReviewController = {
 
@@ -26,7 +27,8 @@ const ReviewController = {
     // POST create new review
     createNewReview : async (req, res) => {
         try {
-            await Review.create(req.body)
+            const newReview = await Review.create(req.body)
+            await Movie.findByIdAndUpdate(newReview.movie, { reviews: newReview._id })
             res.json({ message: `A new review was created!` })
         } catch (err) {
             res.status(500).json({ message : err })
