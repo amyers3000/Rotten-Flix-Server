@@ -20,7 +20,15 @@ const movieSchema = new mongoose.Schema({
     year: {
         type: Number,
         required: true
-    }
+    },
+    ratings: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Rating"
+    }],
+    reviews: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Review"
+    }]
 })
 
 module.exports = mongoose.model('Movie', movieSchema)
