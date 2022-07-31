@@ -27,6 +27,10 @@ const RatingController = {
     // POST create new rating
     createNewRating : async (req, res) => {
         try {
+            const check = await Rating.find({movie: req.body.movie, username: req.body.username});
+            if (check.length > 0) {
+                return res.status(400).json({ message: "Only Allowed 1 Rating Per Movie." })
+            }
             const newRating = await Rating.create(req.body)
             const movie = await Movie.findById(newRating.movie);
             movie.ratings.push(newRating._id);
