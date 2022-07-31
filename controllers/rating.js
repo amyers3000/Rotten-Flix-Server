@@ -31,7 +31,6 @@ const RatingController = {
             const movie = await Movie.findById(newRating.movie);
             movie.ratings.push(newRating._id);
             movie.save()
-            // await Movie.findByIdAndUpdate(newRating.movie,{ ratings: newRating._id })
             res.json({ message: `A new rating was created!` })
         } catch (err) {
             res.status(500).json({ message: err })

@@ -28,7 +28,9 @@ const ReviewController = {
     createNewReview : async (req, res) => {
         try {
             const newReview = await Review.create(req.body)
-            await Movie.findByIdAndUpdate(newReview.movie, { reviews: newReview._id })
+            const movie = await Movie.findById(newReview.movie)
+            movie.reviews.push(newReview._id)
+            movie.save()
             res.json({ message: `A new review was created!` })
         } catch (err) {
             res.status(500).json({ message : err })
