@@ -27,6 +27,10 @@ const ReviewController = {
     // POST create new review
     createNewReview : async (req, res) => {
         try {
+            const check = await Review.find({movie: req.body.movie, username: req.body.username});
+            if (check.length > 0) {
+                return res.status(400).json({ message: "Only Allowed 1 Review Per Movie." })
+            }
             const newReview = await Review.create(req.body)
             const movie = await Movie.findById(newReview.movie)
             movie.reviews.push(newReview._id)
