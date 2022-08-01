@@ -1,4 +1,7 @@
 # Rotten-Flix-Server Documentation
+
+API for Rotten-Flix movie review/rating project.
+
 https://rotten-flix-api.herokuapp.com/movies
 
 ## Routes
