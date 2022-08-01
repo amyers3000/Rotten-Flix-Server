@@ -40,6 +40,26 @@ const AuthController = {
             res.status(500).json({ message: error })
         }
     },
+    
+    AuthenticateToken: async (req, res, next) => {
+        const authHeader = req.headers['authorization']
+        const token = authHeader && authHeader.split(' ')[1]
+
+        if (token === null) return res.status(401).send('no token')
+
+        jwt.verify(token, process.env.GUARDIAN_TOKEN, (err, user) => {
+            if (err) return res.status(403).send('invalid token')
+            req.user = user
+            next()
+        })
+    },
+
+    AuthenticateSession: async (req, res) => {
+        User.findById(req.body.uid, (err,doc) => {
+            if (err) return res.status(401).send("Error: Invalid User")
+            return doc ? res.json({message: true}) : res.status(401).send('Error: Invalid User')
+        })
+    },
 
     GenerateAuthToken: (user) => jwt.sign({user: user}, process.env.GUARDIAN_TOKEN, { expiresIn: '30m' } )
 }
