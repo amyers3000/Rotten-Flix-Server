@@ -5,7 +5,14 @@ const MovieController = {
     // GET all movies
     getAllMovies : async (req, res) => {
         try {
-            const allMovies = await Movie.find().populate('reviews').populate('ratings')
+            const allMovies = await Movie.find().populate({
+                path: 'reviews',
+                model: "Review",
+                populate: {
+                    path: "username",
+                    model: "User"
+                }
+            }).populate('ratings')
             res.json(allMovies)
         } catch (err) {
             res.status(500).json({ message: err })
