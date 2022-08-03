@@ -1,6 +1,6 @@
 # Rotten-Flix-Server Documentation
 
-API for Rotten-Flix movie review/rating project.
+API for Rotten-Flix movie review/rating project. Rotten-Flix-Client was made in Agile group enviroment with 4 contributers.
 
 https://rotten-flix-api.herokuapp.com/movies
 
