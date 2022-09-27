@@ -4,6 +4,8 @@ API for Rotten-Flix movie review/rating project. Rotten-Flix-Client was made in 
 
 https://rotten-flix-api.herokuapp.com/movies
 
+Front-end code found under Rotten-Flix-Client: https://github.com/amyers3000/Rotten-Flix-Client
+
 ## Routes
 
 ### Movies
